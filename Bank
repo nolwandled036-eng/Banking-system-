@@ -1,0 +1,222 @@
+include<iostream>
+#include<string>
+ 
+using namespace std;
+ 
+// Banking Variables
+double Deposit, Withdrawal, Balance;
+double TransferAccount = 0;
+int Cash;
+ 
+// Initial Banking Variable
+double initialBalance = 10000;
+int ExitCode = 6;
+ 
+// Array Of Customer Names
+string CustomerName[3] = {"Sisanda Black", "Sloth Morgan", "Zinandi Ntombi"};
+ 
+// Array of Account Numbers
+int AccountNumber[3] = {1786, 2782, 6728};
+ 
+// Array of Account Pins
+int AccountPin[3] = {7867, 7009, 2525};
+ 
+// Array Of Account Balances
+int AccountBalance[3] = {7000, 78393, 43000};
+ 
+int Options;
+ 
+void DepositAmount()
+{
+    cout << "```````````DEPOSIT````````````" << endl;
+    cout << endl;
+ 
+    cout << "HOW MUCH MONEY DO YOU WANT TO DEPOSIT IN YOUR ACCOUNT?" << endl;
+    cin >> Deposit;
+ 
+    if (Deposit <= 0)
+    {
+        cout << "PLEASE ENTER A VALID DEPOSIT AMOUNT." << endl;
+    }
+    else
+    {
+        Balance = Balance + Deposit;
+        initialBalance = Balance;
+ 
+        cout << "DEPOSIT: R " << Deposit << endl;
+        cout << "BALANCE: R " << Balance << endl;
+        cout << "YOU HAVE SUCCESSFULLY DEPOSITED R " << Deposit << " INTO YOUR BANK ACCOUNT." << endl;
+    }
+}
+ 
+void WithdrawAmount()
+{
+    cout << "`````````WITHDRAWAL````````" << endl;
+    cout << endl;
+ 
+    cout << "HOW MUCH DO YOU WANT TO WITHDRAW FROM YOUR ACCOUNT?" << endl;
+    cin >> Withdrawal;
+    cout << endl;
+ 
+    if (Withdrawal <= 0)
+    {
+        cout << "PLEASE ENTER A VALID WITHDRAWAL AMOUNT." << endl;
+    }
+    else if (Withdrawal > Balance)
+    {
+        cout << "YOUR WITHDRAWAL MUST NOT EXCEED YOUR ACCOUNT BALANCE." << endl;
+    }
+    else
+    {
+        Balance = Balance - Withdrawal;
+        initialBalance = Balance;
+ 
+        cout << "BALANCE: R " << Balance << endl;
+        cout << endl;
+        cout << "YOU HAVE SUCCESSFULLY WITHDRAWN FROM YOUR ACCOUNT." << endl;
+    }
+}
+ 
+void CashSending()
+{
+    cout << "`````````SEND CASH`````````" << endl;
+    cout << endl;
+ 
+    cout << "HOW MUCH DO YOU WANT TO SEND TO ANOTHER ACCOUNT?" << endl;
+    cin >> Cash;
+ 
+    if (Cash <= 0)
+    {
+        cout << "PLEASE ENTER A VALID AMOUNT." << endl;
+    }
+    else if (Cash > Balance)
+    {
+        cout << "THE AMOUNT YOU SEND CANNOT EXCEED YOUR ACCOUNT BALANCE." << endl;
+    }
+    else
+    {
+        Balance = Balance - Cash;
+        initialBalance = Balance;
+        TransferAccount = TransferAccount + Cash;
+ 
+        cout << "BALANCE ON YOUR ACCOUNT: R " << Balance << endl;
+        cout << endl;
+        cout << "THE BALANCE ON THE TRANSFER ACCOUNT IS: R " << TransferAccount << endl;
+    }
+}
+ 
+void BalanceCheck()
+{
+    cout << "`````````CHECK BALANCE`````````" << endl;
+    cout << endl;
+ 
+    cout << "BALANCE: R " << Balance << endl;
+    cout << endl;
+}
+ 
+void CustomerInformation()
+{
+    cout << "Customer 1: " << CustomerName[0] << endl;
+    cout << "Account Number: " << AccountNumber[0] << endl;
+    cout << "PIN: " << AccountPin[0] << endl;
+    cout << "BALANCE: R " << AccountBalance[0] << endl;
+    cout << endl;
+ 
+    cout << "Customer 2: " << CustomerName[1] << endl;
+    cout << "Account Number: " << AccountNumber[1] << endl;
+    cout << "PIN: " << AccountPin[1] << endl;
+    cout << "BALANCE: R " << AccountBalance[1] << endl;
+    cout << endl;
+ 
+    cout << "Customer 3: " << CustomerName[2] << endl;
+    cout << "Account Number: " << AccountNumber[2] << endl;
+    cout << "PIN: " << AccountPin[2] << endl;
+    cout << "BALANCE: R " << AccountBalance[2] << endl;
+    cout << endl;
+}
+ 
+void ExitSystem()
+{
+    cout << "`````````EXIT SYSTEM`````````" << endl;
+    cout << endl;
+ 
+    cout << "WE REALLY APPRECIATE YOU USING OUR BANKING SYSTEM." << endl;
+}
+ 
+void meun()
+{
+    int Options;
+    Balance = initialBalance;
+ 
+    do
+    {
+        cout << "############################################################" << endl;
+        cout << "WELCOME TO ANDY'S EASY BANKING WHAT COULD WE HELP YOU WITH?" << endl;
+        cout << "############################################################" << endl;
+ 
+        cout << "Enter Customer 1: " << CustomerName[0] << endl;
+        cout << "Enter your Account number: " << AccountNumber[0] << endl;
+        cout << "Enter your pin: " << AccountPin[0] << endl;
+        cout << "Enter your Account Balance: R " << AccountBalance[0] << endl;
+        cout << endl;
+ 
+        cout << "Enter Customer 2: " << CustomerName[1] << endl;
+        cout << "Enter Your Account Number: " << AccountNumber[1] << endl;
+        cout << "Enter your pin: " << AccountPin[1] << endl;
+        cout << "Enter your Account Balance: R " << AccountBalance[1] << endl;
+        cout << endl;
+ 
+        cout << "Enter Customer 3: " << CustomerName[2] << endl;
+        cout << "Enter Your Account Number: " << AccountNumber[2] << endl;
+        cout << "Enter your pin: " << AccountPin[2] << endl;
+        cout << "Enter your Account Balance: R " << AccountBalance[2] << endl;
+        cout << endl;
+ 
+        cout << "Enter 1 for DEPOSIT" << endl;
+        cout << "Enter 2 for WITHDRAW" << endl;
+        cout << "Enter 3 for SEND CASH" << endl;
+        cout << "Enter 4 for CHECK BALANCE" << endl;
+        cout << "Enter 5 for CUSTOMER INFORMATION" << endl;
+        cout << "Enter 6 for EXIT" << endl;
+        cin >> Options;
+ 
+        switch (Options)
+        {
+        case 1:
+            DepositAmount();
+            break;
+ 
+        case 2:
+            WithdrawAmount();
+            break;
+ 
+        case 3:
+            CashSending();
+            break;
+ 
+        case 4:
+            BalanceCheck();
+            break;
+ 
+        case 5:
+            CustomerInformation();
+            break;
+ 
+        case 6:
+            ExitSystem();
+            break;
+ 
+        default:
+            cout << "OUR BANKING SYSTEM DOES NOT OFFER SUCH AN OPTION." << endl;
+            break;
+        }
+ 
+    } while (Options != ExitCode);
+}
+ 
+int main()
+{
+    meun();
+ 
+    return 0;
+}
